@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import type { Question, QuizResult } from '../types/quiz';
 import { kcnaQuestions } from '../data/kcna-questions';
 
-export const useQuiz = (questionCount: number = 60) => {
+export const useQuiz = (questionCount: number = 30) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
-  const [timeLeft, setTimeLeft] = useState(90 * 60); // 90 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 minutes in seconds
   const [isQuizStarted, setIsQuizStarted] = useState(false);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [startTime, setStartTime] = useState<number>(0);
@@ -36,7 +36,7 @@ export const useQuiz = (questionCount: number = 60) => {
       setQuestions(selectedQuestions);
       setSelectedAnswers(new Array(selectedQuestions.length).fill(-1));
       setCurrentQuestionIndex(0);
-      setTimeLeft(90 * 60); // 90 minutes in seconds
+      setTimeLeft(60 * 60); // 60 minutes in seconds
       setIsQuizStarted(true);
       setIsQuizCompleted(false);
       setStartTime(Date.now());
